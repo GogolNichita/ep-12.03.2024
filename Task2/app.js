@@ -6,9 +6,9 @@ function ucLast(phrase) {
     if (!phrase) {
         return phrase;
     }
-    const words = phrase.split(" ");
+const words = phrase.split(/\b/);
 
-    return words.map(word => wordUpperCaseLast(word)).join(" ");
+    return words.map(word => wordUpperCaseLast(word)).join("");
 }
 
 const words = prompt("Enter the phrase ");
