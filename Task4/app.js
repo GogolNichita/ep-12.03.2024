@@ -1,28 +1,30 @@
-function findHigherPricePerHour(service) {
-    if (service.length === 0) {
+function findHigherPricePerHour(services) {
+    if (services.length === 0) {
         return null;
     }
+    let HigherPricePerHour = services[0];
+    for (let i = 1; i < services.length; i++) {
 
-    let HigherPricePerHour = service[0];
-
-    for (let i = 0; i < service.length; i++) {
-        if (service[i].price / service[i].duration > HigherPricePerHour.price / HigherPricePerHour.duration) {
-            HigherPricePerHour = service[i];
+        if (services[i].price / services[i].duration > HigherPricePerHour.price / HigherPricePerHour.duration) {
+            HigherPricePerHour = services[i];
         }
     }
 
     return HigherPricePerHour;
 }
 
-function findTotalCost(service) {
+function findTotalCost(services) {
     let totalCost = 0;
 
-    for (let i = 0; i < service.length; i++) {
-        totalCost += service[i].price;
+    for (let i = 0; i < services.length; i++) {
+        totalCost += services[i].price;
     }
 
     return totalCost;
 }
+
+const findTotalCostOptimised = (services) => services.reduce((accumulator, value) => accumulator + value.price, 0);
+
 
 
 let serviceList = [
@@ -45,3 +47,4 @@ let serviceList = [
 
 console.log(findHigherPricePerHour(serviceList));
 console.log(findTotalCost(serviceList));
+console.log(findTotalCostOptimised(serviceList));
